@@ -19,6 +19,7 @@ namespace TestVersionSDK_Standard
         readonly StoryManager manager = new StoryManager();
         public MainPage()
         {
+            BindingContext = stories;
             InitializeComponent();
         }
 
@@ -28,7 +29,13 @@ namespace TestVersionSDK_Standard
 
             UpdateStoryList();
         }
-
+        void Refreshing(object sender, EventArgs e)
+        {
+            var list = (ListView)sender;
+            list.IsRefreshing = true;
+            UpdateStoryList();
+            list.IsRefreshing = false;
+        }
         void UpdateStoryList()
         {
            
