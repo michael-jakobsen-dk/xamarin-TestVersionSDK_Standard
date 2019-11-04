@@ -15,26 +15,21 @@ namespace TestVersionSDK_Standard.Data
             
             string instanceUrl = "https://www16.v1host.com/api-examples/";
             string accessToken = "1.bndNO51GiliELZu1bbQdq3omgRI=";
-            
 
+
+
+
+          
             var v1 = V1Connector
                        .WithInstanceUrl(instanceUrl)
                        .WithUserAgentHeader("Examples", "0.1")
                        .WithAccessToken(accessToken);
 
-
-           /* 
-            dynamic scope = v1
-                .Query("Scope: 1015")
-                .Select("Workitems:Story")
-                .RetrieveFirst();
-           */
-
             var assets = v1.Query("Story")
               .Select("Name", "Scope", "Estimate", "Description", "Number", "IsClosed")
               .Retrieve();
 
-          
+      
             foreach (dynamic story in assets)
             {
 
